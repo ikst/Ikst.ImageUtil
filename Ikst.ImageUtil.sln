@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ikst.ImageUtil", "Ikst.ImageUtil\Ikst.ImageUtil.csproj", "{DF9085CB-A625-479E-A9F2-A09D39D0A964}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{7CBFF878-78E6-4666-9B8C-F6B164A3BD83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF9085CB-A625-479E-A9F2-A09D39D0A964}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9085CB-A625-479E-A9F2-A09D39D0A964}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9085CB-A625-479E-A9F2-A09D39D0A964}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9085CB-A625-479E-A9F2-A09D39D0A964}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CBFF878-78E6-4666-9B8C-F6B164A3BD83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CBFF878-78E6-4666-9B8C-F6B164A3BD83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CBFF878-78E6-4666-9B8C-F6B164A3BD83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CBFF878-78E6-4666-9B8C-F6B164A3BD83}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {83B00D44-C3B9-40F0-A532-6645ECB49207}
+	EndGlobalSection
+EndGlobal
