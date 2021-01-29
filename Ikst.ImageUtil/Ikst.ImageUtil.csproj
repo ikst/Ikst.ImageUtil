@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net5.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ikst</Authors>
     <Company>ikst</Company>
@@ -9,9 +9,11 @@
     <RepositoryUrl>https://github.com/ikst/Ikst.ImageUtil</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Bitmap Image Resize</PackageTags>
-    <Copyright>MIT</Copyright>
-    <Description>System.Drawing.Image extension method + Util class.
+    <Copyright></Copyright>
+    <Description>System.Drawing.Image class extension method + Util class.
 Utility classes for image resizing, file output, etc.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>0.0.5</Version>
   </PropertyGroup>
 
   <ItemGroup>
