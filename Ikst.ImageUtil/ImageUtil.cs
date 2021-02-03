@@ -3,46 +3,112 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Ikst.ImageUtil
 {
     public static class ImageUtil
     {
 
-        public static Image BinaryToImage(byte[] binary)
+        /// <summary>
+        /// バイナリをImageに変換します。
+        /// </summary>
+        /// <param name="binary">バイナリ</param>
+        /// <returns></returns>
+        public static Image ByteArrayToImage(byte[] binary)
         {
-            using(MemoryStream ms = new MemoryStream(binary))
+            using (MemoryStream ms = new MemoryStream(binary))
             {
                 return new Bitmap(ms);
             }
         }
 
-        public static Image UrlToImage(string url)
+        /// <summary>
+        /// ダウンロードしてImageを返却します
+        /// </summary>
+        /// <param name="uri">uri</param>
+        /// <returns></returns>
+        public static async Task<Image> DownloadImage(Uri uri)
         {
-            return null;
+            return await DownloadImage(uri.AbsoluteUri);
         }
+
+        /// <summary>
+        /// ダウンロードしてImageを返却します
+        /// </summary>
+        /// <param name="url">URL</param>
+        /// <returns></returns>
+        public static async Task<Image> DownloadImage(string url)
+        {
+            using (var hc = new HttpClient())
+            using (var st = await hc.GetStreamAsync(url))
+            {
+                return new Bitmap(st);
+            }
+        }
+
+        /// <summary>
+        /// 透明な領域を切り出します
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public static Image CropTransparentArea(this Image img)
+        {
+            throw new NotImplementedException();
+            // TODO:実装する
+            // https://qiita.com/takutoy/items/b123dde5a699f65917b4
+        }
+
+
+        /// <summary>
+        /// 丸く切り出します
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public static Image CropCircle(this Image img)
+        {
+            throw new NotImplementedException();
+            // TODO:実装する
+        }
+
+
+        /// <summary>
+        /// 画像形式を判別してImageCodecInfoを返却します
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public static ImageCodecInfo GetCodec(this Image img)
+        {
+            foreach (ImageCodecInfo ici in ImageCodecInfo.GetImageDecoders())
+            {
+                if (ici.FormatID == img.RawFormat.Guid) return ici;
+            }
+            throw new FormatException("画像形式を判別出来ません。");
+        }
+
 
 
         /// <summary>
         /// リサイズします。
         /// </summary>
-        /// <param name="bmp">拡張メソッドの元Bitmap</param>
+        /// <param name="img">拡張メソッドの元Bitmap</param>
         /// <param name="size">変換するサイズ</param>
         /// <param name="resizeMode">リサイズモード</param>
         /// <param name="interpolationMode">イメージを拡大または回転するときのアルゴリズム</param>
         /// <param name="backgroundBrush">余白が発生する場合の背景ブラシ</param>
         /// <param name="centering">余白が発生する場合に元画像を中央寄せにするかどうかの論理値</param>
         /// <returns></returns>
-        public static Bitmap Resize(this Image bmp, Size size, ResizeMode resizeMode = ResizeMode.UniformToFill, InterpolationMode interpolationMode = InterpolationMode.Default, Brush backgroundBrush = null, bool centering = true)
+        public static Bitmap Resize(this Image img, Size size, ResizeMode resizeMode = ResizeMode.UniformToFill, InterpolationMode interpolationMode = InterpolationMode.Default, Brush backgroundBrush = null, bool centering = true)
         {
-            return Resize(bmp, size.Width, size.Height, resizeMode, interpolationMode, backgroundBrush, centering);
+            return Resize(img, size.Width, size.Height, resizeMode, interpolationMode, backgroundBrush, centering);
         }
 
 
         /// <summary>
         /// リサイズします。
         /// </summary>
-        /// <param name="bmp">拡張メソッドの元Bitmap</param>
+        /// <param name="img">拡張メソッドの元Bitmap</param>
         /// <param name="width">横幅</param>
         /// <param name="height">縦幅</param>
         /// <param name="resizeMode">リサイズモード</param>
@@ -50,7 +116,7 @@ namespace Ikst.ImageUtil
         /// <param name="backgroundBrush">余白が発生する場合の背景ブラシ</param>
         /// <param name="centering">余白が発生する場合に元画像を中央寄せにするかどうかの論理値</param>
         /// <returns></returns>
-        public static Bitmap Resize(this Image bmp, int width, int height, ResizeMode resizeMode = ResizeMode.UniformToFill, InterpolationMode interpolationMode = InterpolationMode.Default, Brush backgroundBrush = null, bool centering = true)
+        public static Bitmap Resize(this Image img, int width, int height, ResizeMode resizeMode = ResizeMode.UniformToFill, InterpolationMode interpolationMode = InterpolationMode.Default, Brush backgroundBrush = null, bool centering = true)
         {
 
             // サイズチェック
@@ -62,7 +128,7 @@ namespace Ikst.ImageUtil
             // 縦横比を維持したままの画像サイズにする場合
             if (resizeMode == ResizeMode.FixedAspectRatioResize)
             {
-                Size convSize = ConvertAspectRatioFixedSize(bmp.Size, new Size(width, height));
+                Size convSize = ConvertAspectRatioFixedSize(img.Size, new Size(width, height));
 
                 // 設定を書き換える
                 width = convSize.Width;
@@ -79,7 +145,7 @@ namespace Ikst.ImageUtil
             {
 
                 // 元画像より大きなサイズに変換する場合アルゴリズムを設定する
-                if ((bmp.Width < width) || (bmp.Height < height))
+                if ((img.Width < width) || (img.Height < height))
                 {
                     g.InterpolationMode = interpolationMode;
                 }
@@ -103,26 +169,26 @@ namespace Ikst.ImageUtil
                         // センタリング
                         if (centering)
                         {
-                            point.X = (width - bmp.Width) / 2;
-                            point.Y = (height - bmp.Height) / 2;
+                            point.X = (width - img.Width) / 2;
+                            point.Y = (height - img.Height) / 2;
                         }
 
                         // 描画
-                        Rectangle rec = new Rectangle(point.X, point.Y, bmp.Width, bmp.Height);
-                        g.DrawImageUnscaledAndClipped(bmp, rec);
+                        Rectangle rec = new Rectangle(point.X, point.Y, img.Width, img.Height);
+                        g.DrawImageUnscaledAndClipped(img, rec);
 
                         break;
 
                     case ResizeMode.Fill:
 
                         // 描画
-                        g.DrawImage(bmp, point.X, point.Y, destBmp.Width, destBmp.Height);
+                        g.DrawImage(img, point.X, point.Y, destBmp.Width, destBmp.Height);
                         break;
 
                     case ResizeMode.Uniform:
 
                         // 縦横比を維持しつつ出力サイズより小さくなるサイズを取得
-                        Size tmpSize1 = ConvertUniformSize(bmp.Size, new Size(width, height), false);
+                        Size tmpSize1 = ConvertUniformSize(img.Size, new Size(width, height), false);
 
                         // センタリング
                         if (centering)
@@ -132,13 +198,13 @@ namespace Ikst.ImageUtil
                         }
 
                         // 描画
-                        g.DrawImage(bmp, point.X, point.Y, tmpSize1.Width, tmpSize1.Height);
+                        g.DrawImage(img, point.X, point.Y, tmpSize1.Width, tmpSize1.Height);
                         break;
 
                     case ResizeMode.UniformToFill:
 
                         // 縦横比を維持しつつ出力サイズより大きくなるようにサイズを取得
-                        Size tmpSize2 = ConvertUniformSize(bmp.Size, new Size(width, height), true);
+                        Size tmpSize2 = ConvertUniformSize(img.Size, new Size(width, height), true);
 
                         // センタリング
                         if (centering)
@@ -155,7 +221,7 @@ namespace Ikst.ImageUtil
                         }
 
                         // 描画
-                        g.DrawImage(bmp, point.X, point.Y, tmpSize2.Width, tmpSize2.Height);
+                        g.DrawImage(img, point.X, point.Y, tmpSize2.Width, tmpSize2.Height);
 
                         break;
 
@@ -172,10 +238,10 @@ namespace Ikst.ImageUtil
         /// <summary>
         /// 引数に指定されたファイル名の拡張子からフォーマットを自動で判別して画像を保存します。
         /// </summary>
-        /// <param name="bmp">拡張メソッドの元Bitmap</param>
+        /// <param name="img">拡張メソッドの元Bitmap</param>
         /// <param name="path">保存するファイルのパス</param>
         /// <param name="encodeQuality">画像のクオリティ（jpegのみ有効）</param>
-        public static void SaveEx(this Image bmp, string path, int encodeQuality = 75)
+        public static void SaveFile(this Image img, string path, int encodeQuality = 75)
         {
             // コーデックを取得
             ImageCodecInfo codec = GetEncoderInfo(path);
@@ -183,28 +249,38 @@ namespace Ikst.ImageUtil
             if (codec != null)
             {
                 EncoderParameters encParam = GetEncoderParameters(encodeQuality);
-                bmp.Save(path, codec, encParam);
+                img.Save(path, codec, encParam);
             }
             else
             {
                 throw new ArgumentException($"対応していない拡張子{path}です。");
             }
-
         }
 
 
         /// <summary>
         /// バイナリ形式に変換します。
         /// </summary>
-        /// <param name="bmp">拡張メソッドの元Bitmap</param>
+        /// <param name="img">拡張メソッドの元Bitmap</param>
+        /// <returns>バイナリ</returns>
+        public static byte[] ToByteArray(this Image img)
+        {
+            return ToByteArray(img, ImageFormat.Bmp);
+        }
+
+
+        /// <summary>
+        /// バイナリ形式に変換します。
+        /// </summary>
+        /// <param name="img">拡張メソッドの元Bitmap</param>
         /// <param name="format">イメージのファイル形式</param>
         /// <returns>バイナリ</returns>
-        public static byte[] ToBinary(this Image bmp, System.Drawing.Imaging.ImageFormat format)
+        public static byte[] ToByteArray(this Image img, System.Drawing.Imaging.ImageFormat format)
         {
             byte[] binary;
             using (MemoryStream ms = new MemoryStream())
             {
-                bmp.Save(ms, format);
+                img.Save(ms, format);
                 binary = ms.GetBuffer();
             }
             return binary;
@@ -349,23 +425,6 @@ namespace Ikst.ImageUtil
             return null;
         }
 
-
-        /// <summary>
-        /// ImageFormatで指定されたImageCodecInfoを探して返す
-        /// </summary>
-        /// <param name="f">イメージフォーマット</param>
-        /// <returns>ImageCodecInfo</returns>
-        private static ImageCodecInfo GetEncoderInfo(ImageFormat f)
-        {
-            foreach (ImageCodecInfo enc in ImageCodecInfo.GetImageEncoders())
-            {
-                if (enc.FormatID == f.Guid)
-                {
-                    return enc;
-                }
-            }
-            return null;
-        }
 
         #endregion
 

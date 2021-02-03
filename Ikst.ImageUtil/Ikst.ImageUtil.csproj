@@ -13,7 +13,7 @@
     <Description>System.Drawing.Image class extension method + Util class.
 Utility classes for image resizing, file output, etc.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>0.0.5</Version>
+    <Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
