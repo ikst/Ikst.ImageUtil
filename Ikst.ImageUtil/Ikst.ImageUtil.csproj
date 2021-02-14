@@ -15,7 +15,9 @@ It is mainly provided as an extension method of the System.Drawing.Image class.<
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Version>0.1.3</Version>
     <PackageReleaseNotes>Please check the following.
-https://github.com/ikst/Ikst.ImageUtil/blob/master/README.md</PackageReleaseNotes>
+https://github.com/ikst/Ikst.ImageUtil/blob/master/README.md
+
+</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
