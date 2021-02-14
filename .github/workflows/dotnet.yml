@@ -5,7 +5,7 @@ on:
   push:
     branches: [ master ]
     paths:
-    - "Ikst.ImageUtil.csproj"
+    - "Ikst.ImageUtil/*.csproj"
   pull_request:
     branches: [ master ]
 
