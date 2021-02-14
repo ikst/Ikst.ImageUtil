@@ -1,6 +1,6 @@
 # Ikst.ImageUtil
 This is a utility class to simplify image-related operations such as image resizing and file output.
-It is mainly provided as an extension method of the Image class.
+It is mainly provided as an extension method of the System.Drawing.Image class.
 
 The following resize modes can be specified for resizing images.
 

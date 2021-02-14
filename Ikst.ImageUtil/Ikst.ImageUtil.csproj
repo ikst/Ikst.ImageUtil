@@ -10,10 +10,10 @@
     <RepositoryType>git</RepositoryType>
     <PackageTags>Bitmap Image Resize</PackageTags>
     <Copyright></Copyright>
-    <Description>System.Drawing.Image class extension method + Util class.
-Utility classes for image resizing, file output, etc.</Description>
+    <Description>This is a utility class to simplify image-related operations such as image resizing and file output.
+It is mainly provided as an extension method of the System.Drawing.Image class.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
