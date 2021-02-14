@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ikst.ImageUtil</name>
+    </assembly>
+    <members>
+        <member name="M:Ikst.ImageUtil.ImageUtil.ByteArrayToImage(System.Byte[])">
+            <summary>
+            バイナリをImageに変換します。
+            </summary>
+            <param name="binary">バイナリ</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.DownloadImage(System.Uri)">
+            <summary>
+            ダウンロードしてImageを返却します
+            </summary>
+            <param name="uri">uri</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.DownloadImage(System.String)">
+            <summary>
+            ダウンロードしてImageを返却します
+            </summary>
+            <param name="url">URL</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.CropTransparentArea(System.Drawing.Image)">
+            <summary>
+            透明な領域を切り出します
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.CropCircle(System.Drawing.Image)">
+            <summary>
+            丸く切り出します
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.GetCodec(System.Drawing.Image)">
+            <summary>
+            画像形式を判別してImageCodecInfoを返却します
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.Resize(System.Drawing.Image,System.Drawing.Size,Ikst.ImageUtil.ResizeMode,System.Drawing.Drawing2D.InterpolationMode,System.Drawing.Brush,System.Boolean)">
+            <summary>
+            リサイズします。
+            </summary>
+            <param name="img">拡張メソッドの元Bitmap</param>
+            <param name="size">変換するサイズ</param>
+            <param name="resizeMode">リサイズモード</param>
+            <param name="interpolationMode">イメージを拡大または回転するときのアルゴリズム</param>
+            <param name="backgroundBrush">余白が発生する場合の背景ブラシ</param>
+            <param name="centering">余白が発生する場合に元画像を中央寄せにするかどうかの論理値</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.Resize(System.Drawing.Image,System.Int32,System.Int32,Ikst.ImageUtil.ResizeMode,System.Drawing.Drawing2D.InterpolationMode,System.Drawing.Brush,System.Boolean)">
+            <summary>
+            リサイズします。
+            </summary>
+            <param name="img">拡張メソッドの元Bitmap</param>
+            <param name="width">横幅</param>
+            <param name="height">縦幅</param>
+            <param name="resizeMode">リサイズモード</param>
+            <param name="interpolationMode">イメージを拡大または回転するときのアルゴリズム</param>
+            <param name="backgroundBrush">余白が発生する場合の背景ブラシ</param>
+            <param name="centering">余白が発生する場合に元画像を中央寄せにするかどうかの論理値</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.SaveFile(System.Drawing.Image,System.String,System.Int32)">
+            <summary>
+            引数に指定されたファイル名の拡張子からフォーマットを自動で判別して画像を保存します。
+            </summary>
+            <param name="img">拡張メソッドの元Bitmap</param>
+            <param name="path">保存するファイルのパス</param>
+            <param name="encodeQuality">画像のクオリティ（jpegのみ有効）</param>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.ToByteArray(System.Drawing.Image)">
+            <summary>
+            バイナリ形式に変換します。
+            </summary>
+            <param name="img">拡張メソッドの元Bitmap</param>
+            <returns>バイナリ</returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.ToByteArray(System.Drawing.Image,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            バイナリ形式に変換します。
+            </summary>
+            <param name="img">拡張メソッドの元Bitmap</param>
+            <param name="format">イメージのファイル形式</param>
+            <returns>バイナリ</returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.ConvertUniformSize(System.Drawing.Size,System.Drawing.Size,System.Boolean)">
+            <summary>
+            Uniformで収まるサイズに変換する。
+            </summary>
+            <param name="sourceSize">元のサイズ</param>
+            <param name="convertSize">変換したいサイズ</param>
+            <param name="toFill">true:元サイズ以下。false:元のサイズを超える</param>
+            <returns>補正されたサイズ</returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.ConvertAspectRatioFixedSize(System.Drawing.Size,System.Drawing.Size)">
+            <summary>
+            縦横比を崩さないようにSize構造体を変換します。
+            ソースのサイズwidth、hightの大きいほうがベースとなります。
+            </summary>
+            <param name="sourceSize">元のサイズ</param>
+            <param name="convertSize">変換したいサイズ</param>
+            <returns>縦横比を崩さない様に補正したSize</returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.GetEncoderParameters(System.Int32)">
+            <summary>
+            品質を指定したEncoderParametersを取得する
+            </summary>
+            <param name="encodeQuality">品質 （1～100 ※1以下は1、100以上は100と同義）</param>
+            <returns>エンコードパラメータ</returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.GetEncoderInfo(System.String)">
+            <summary>
+            指定されたImageCodecInfoを探して返す
+            </summary>
+            <param name="fileName">ファイル名</param>
+            <returns>ImageCodecInfo</returns>
+        </member>
+        <member name="T:Ikst.ImageUtil.ResizeMode">
+            <summary>
+            画像変換モード
+            </summary>
+        </member>
+        <member name="F:Ikst.ImageUtil.ResizeMode.None">
+            <summary>元画像を伸縮しない。拡大した場合は余白が出来る。</summary>
+        </member>
+        <member name="F:Ikst.ImageUtil.ResizeMode.Fill">
+            <summary>縦横比を維持しないで元画像を伸縮する。余白は出来ない。</summary>
+        </member>
+        <member name="F:Ikst.ImageUtil.ResizeMode.Uniform">
+            <summary>縦横比を維持して元画像を伸縮する。元画像と縦横比が異なる場合、余白ができる。</summary>
+        </member>
+        <member name="F:Ikst.ImageUtil.ResizeMode.UniformToFill">
+            <summary>縦横比を維持して元画像を伸縮する。元画像と縦横比が異なる場合であっても、余白はできない。元画像の一部が欠落する</summary>
+        </member>
+        <member name="F:Ikst.ImageUtil.ResizeMode.FixedAspectRatioResize">
+            <summary>縦横比を維持して変換後サイズをリサイズする。余白はできない。（元画像サイズと変換後サイズの縦横比が一致した状態でのFill）</summary>
+        </member>
+    </members>
+</doc>
