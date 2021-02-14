@@ -4,19 +4,19 @@ It is mainly provided as an extension method of the Image class.
 
 The following resize modes can be specified for resizing images.
 
-- None
+- None  
     Keeps the current size of the content.
 
-- Fill
+- Fill  
     Resizes the content to fill the allotted space. The aspect ratio will not be maintained.
 
-- Uniform 
+- Uniform   
     Resizes the content to fit in the allotted area, but maintains the original aspect ratio.
 
-- UniformToFill (default)
+- UniformToFill (default)  
     Resizes the content to fill the allotted space, but preserves the original aspect ratio. If the aspect ratio of the source content is different from the aspect ratio of the target rectangle, the source content will be cropped to fit into the target rectangle.
 
-- FixedAspectRatioResize
+- FixedAspectRatioResize  
     Resizes the image while maintaining the aspect ratio before and after the transformation.
     The size will not be the same as the specified size.
 
