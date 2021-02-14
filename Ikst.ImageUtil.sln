@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ikst.ImageUtil", "Ikst.ImageUtil\Ikst.ImageUtil.csproj", "{DF9085CB-A625-479E-A9F2-A09D39D0A964}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ikst.ImageUtil", "Ikst.ImageUtil\Ikst.ImageUtil.csproj", "{DF9085CB-A625-479E-A9F2-A09D39D0A964}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{7CBFF878-78E6-4666-9B8C-F6B164A3BD83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{7CBFF878-78E6-4666-9B8C-F6B164A3BD83}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{13FD8A73-C843-475E-A001-5EC6DEA5B134}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

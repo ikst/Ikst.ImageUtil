@@ -114,5 +114,18 @@ namespace UnitTest
             Assert.Equal(272, result.Width);
             Assert.Equal(92, result.Height);
         }
+
+        [Fact]
+        public void eg()
+        {
+            Image img = ImageUtil.DownloadImage("https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png").Result;
+            Image resizeImg = img.Resize(90, 30, ResizeMode.Uniform);
+
+            img.SaveFile("result1.png");
+            resizeImg.SaveFile("result2.png");
+
+            img.Dispose();
+            resizeImg.Dispose();
+        }
     }
 }
