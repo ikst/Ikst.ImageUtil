@@ -1,8 +1,11 @@
 name: .NET
 
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
+    paths:
+    - "Ikst.ImageUtil/*.csproj"
   pull_request:
     branches: [ master ]
 

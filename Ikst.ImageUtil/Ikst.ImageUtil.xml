@@ -25,6 +25,27 @@
             <param name="url">URL</param>
             <returns></returns>
         </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.CropTransparentArea(System.Drawing.Image)">
+            <summary>
+            透明な領域を切り出します
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.CropCircle(System.Drawing.Image)">
+            <summary>
+            丸く切り出します
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ikst.ImageUtil.ImageUtil.GetCodec(System.Drawing.Image)">
+            <summary>
+            画像形式を判別してImageCodecInfoを返却します
+            </summary>
+            <param name="img"></param>
+            <returns></returns>
+        </member>
         <member name="M:Ikst.ImageUtil.ImageUtil.Resize(System.Drawing.Image,System.Drawing.Size,Ikst.ImageUtil.ResizeMode,System.Drawing.Drawing2D.InterpolationMode,System.Drawing.Brush,System.Boolean)">
             <summary>
             リサイズします。
