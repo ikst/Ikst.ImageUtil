@@ -11,6 +11,8 @@ namespace Ikst.ImageUtil
     public static class ImageUtil
     {
 
+        #region staticメソッド
+
         /// <summary>
         /// バイナリをImageに変換します。
         /// </summary>
@@ -48,45 +50,10 @@ namespace Ikst.ImageUtil
             }
         }
 
-        /// <summary>
-        /// 透明な領域を切り出します
-        /// </summary>
-        /// <param name="img"></param>
-        /// <returns></returns>
-        public static Image CropTransparentArea(this Image img)
-        {
-            throw new NotImplementedException();
-            // TODO:実装する
-            // https://qiita.com/takutoy/items/b123dde5a699f65917b4
-        }
+        #endregion
 
 
-        /// <summary>
-        /// 丸く切り出します
-        /// </summary>
-        /// <param name="img"></param>
-        /// <returns></returns>
-        public static Image CropCircle(this Image img)
-        {
-            throw new NotImplementedException();
-            // TODO:実装する
-        }
-
-
-        /// <summary>
-        /// 画像形式を判別してImageCodecInfoを返却します
-        /// </summary>
-        /// <param name="img"></param>
-        /// <returns></returns>
-        public static ImageCodecInfo GetCodec(this Image img)
-        {
-            foreach (ImageCodecInfo ici in ImageCodecInfo.GetImageDecoders())
-            {
-                if (ici.FormatID == img.RawFormat.Guid) return ici;
-            }
-            throw new FormatException("画像形式を判別出来ません。");
-        }
-
+        #region 拡張メソッド
 
 
         /// <summary>
@@ -236,6 +203,31 @@ namespace Ikst.ImageUtil
 
 
         /// <summary>
+        /// 透明な領域を切り出します
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public static Image CropTransparentArea(this Image img)
+        {
+            throw new NotImplementedException();
+            // TODO:実装する
+            // https://qiita.com/takutoy/items/b123dde5a699f65917b4
+        }
+
+
+        /// <summary>
+        /// 丸く切り出します
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public static Image CropCircle(this Image img)
+        {
+            throw new NotImplementedException();
+            // TODO:実装する
+        }
+
+
+        /// <summary>
         /// 引数に指定されたファイル名の拡張子からフォーマットを自動で判別して画像を保存します。
         /// </summary>
         /// <param name="img">拡張メソッドの元Bitmap</param>
@@ -285,6 +277,25 @@ namespace Ikst.ImageUtil
             }
             return binary;
         }
+
+
+        /// <summary>
+        /// 画像形式を判別してImageCodecInfoを返却します
+        /// </summary>
+        /// <param name="img"></param>
+        /// <returns></returns>
+        public static ImageCodecInfo GetCodec(this Image img)
+        {
+            foreach (ImageCodecInfo ici in ImageCodecInfo.GetImageDecoders())
+            {
+                if (ici.FormatID == img.RawFormat.Guid) return ici;
+            }
+            throw new FormatException("画像形式を判別出来ません。");
+        }
+
+
+
+        #endregion
 
 
         #region private

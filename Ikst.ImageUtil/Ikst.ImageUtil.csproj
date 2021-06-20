@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ikst</Authors>
     <Company>ikst</Company>
-    <PackageProjectUrl>https://github.com/ikst/Ikst.ImageUtil</PackageProjectUrl>
+    <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/ikst/Ikst.ImageUtil</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Bitmap Image Resize</PackageTags>
@@ -13,7 +13,13 @@
     <Description>System.Drawing.Image class extension method + Util class.
 Utility classes for image resizing, file output, etc.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>0.1.0</Version>
+    <Version>1.0.0</Version>
+    <PackageReleaseNotes>Please check the following.
+https://github.com/ikst/Ikst.ImageUtil/blob/master/README.md</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\oihso\source\repos\Ikst.ImageUtil\Ikst.ImageUtil\Ikst.ImageUtil.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
