@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netcoreapp3.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ikst</Authors>
     <Company>ikst</Company>
@@ -19,7 +19,7 @@ https://github.com/ikst/Ikst.ImageUtil/blob/master/README.md</PackageReleaseNote
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\oihso\source\repos\Ikst.ImageUtil\Ikst.ImageUtil\Ikst.ImageUtil.xml</DocumentationFile>
+    <DocumentationFile>Ikst.ImageUtil.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
