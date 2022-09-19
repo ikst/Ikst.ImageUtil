@@ -8,8 +8,14 @@ using System.Threading.Tasks;
 
 namespace Ikst.ImageUtil
 {
+    // System.Drawing.Common が Windows でしかサポートされなくなった。
+    // https://learn.microsoft.com/ja-jp/dotnet/core/compatibility/core-libraries/6.0/system-drawing-common-windows-only
+    //　update-packege すると動かなくなるので以下バージョンに固定する。
+    // Install-Package System.Drawing.Common -Version 5.0.0
+
     public static class ImageUtil
     {
+
 
         #region staticメソッド
 
