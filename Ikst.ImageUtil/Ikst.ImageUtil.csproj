@@ -13,7 +13,7 @@
     <Description>This is a utility class to simplify image-related operations such as image resizing and file output.
 It is mainly provided as an extension method of the System.Drawing.Image class.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageReleaseNotes>Please check the following.
 https://github.com/ikst/Ikst.ImageUtil/blob/master/README.md</PackageReleaseNotes>
   </PropertyGroup>
